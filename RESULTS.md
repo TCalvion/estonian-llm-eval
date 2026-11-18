@@ -2,6 +2,8 @@
 
 All runs: one laptop with RTX 5070 Ti (12 GB VRAM), llama.cpp server, temperature 0, November 2026. "Off" and "on" refer to the model's reasoning ("thinking") mode. Speed is generation tokens per second on this machine. Empty answers mean the model used the whole token budget without answering.
 
+All models were run as quantised GGUF builds (Q4/Q5) on one consumer GPU. The results describe these builds in my use case, not the original models, and are not a general ranking. The model authors have not reviewed them.
+
 ## EE1–EE3 (conversational Estonian, /60, reasoning off)
 
 | Model | EE1 /20 | EE2 /20 | EE3 /20 | Total | gen t/s |
