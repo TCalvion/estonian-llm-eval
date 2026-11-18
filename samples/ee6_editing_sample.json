@@ -1,0 +1,84 @@
+{
+  "suite": "ee-bench-6",
+  "version": "1.0",
+  "full_suite_size": 16,
+  "full_suite_sha256": "aee6b095faeac48b6b45d8656bf28dc5a2cfffe58a66a7b4007b5a6648063a78",
+  "note": "Public sample. The full suite is held out to avoid training-data contamination; its SHA-256 is given so results can be tied to the frozen version.",
+  "description": "EE6 \"editing\": 16 items (6 correction, 4 clean, 4 status, 2 attribution). The model must fix Estonian grammar and punctuation WITHOUT changing meaning. Deterministic validator in validators/validator_ee6.py.",
+  "tests": [
+    {
+      "id": "ee6_parandus_01",
+      "category": "parandus",
+      "risk": "low",
+      "validator": "toimetamine",
+      "allikas": "Telos saatis 15.11 kell 09.40 kirja Calvionile ja ootab vastus homme.",
+      "expected": {
+        "peab_sisaldama": [
+          "vastust"
+        ],
+        "ei_tohi_sisaldada": [
+          "ootab vastus "
+        ],
+        "kaitstud": [
+          "Telos",
+          "15.11",
+          "09.40"
+        ]
+      },
+      "prompt": "Toimeta allolev eestikeelne tekst: paranda õigekiri, käänded, ühildumine ja kirjavahemärgid nii, et tekst oleks korrektne ja loomulik eesti keel. Ära muuda sisu: nimesid, kuupäevi, kellaaegu, numbreid, ID-sid, otsuste olekut, eitusi, ebakindlust ega seda, kes mida ütles või tegi. Kui tekst on juba korras, tagasta see muutmata. Vasta AINULT toimetatud tekstiga, ilma selgituse, pealkirja ja jutumärkideta.\n\nTEKST:\nTelos saatis 15.11 kell 09.40 kirja Calvionile ja ootab vastus homme."
+    },
+    {
+      "id": "ee6_puhas_01",
+      "category": "puhas",
+      "risk": "low",
+      "validator": "toimetamine",
+      "allikas": "Öine jooks lõppes kell 04.50. Kõik kolm tööd said valmis ja vigu ei olnud.",
+      "expected": {
+        "kaitstud": [
+          "04.50"
+        ],
+        "tapne": true
+      },
+      "prompt": "Toimeta allolev eestikeelne tekst: paranda õigekiri, käänded, ühildumine ja kirjavahemärgid nii, et tekst oleks korrektne ja loomulik eesti keel. Ära muuda sisu: nimesid, kuupäevi, kellaaegu, numbreid, ID-sid, otsuste olekut, eitusi, ebakindlust ega seda, kes mida ütles või tegi. Kui tekst on juba korras, tagasta see muutmata. Vasta AINULT toimetatud tekstiga, ilma selgituse, pealkirja ja jutumärkideta.\n\nTEKST:\nÖine jooks lõppes kell 04.50. Kõik kolm tööd said valmis ja vigu ei olnud."
+    },
+    {
+      "id": "ee6_olek_01",
+      "category": "olek",
+      "risk": "high",
+      "validator": "toimetamine",
+      "allikas": "Telos kaalub plaani M03 kinnitamist, aga otsust pole veel tehtud.",
+      "expected": {
+        "max_muutus": 0.25,
+        "kaitstud": [
+          "Telos",
+          "M03"
+        ]
+      },
+      "prompt": "Toimeta allolev eestikeelne tekst: paranda õigekiri, käänded, ühildumine ja kirjavahemärgid nii, et tekst oleks korrektne ja loomulik eesti keel. Ära muuda sisu: nimesid, kuupäevi, kellaaegu, numbreid, ID-sid, otsuste olekut, eitusi, ebakindlust ega seda, kes mida ütles või tegi. Kui tekst on juba korras, tagasta see muutmata. Vasta AINULT toimetatud tekstiga, ilma selgituse, pealkirja ja jutumärkideta.\n\nTEKST:\nTelos kaalub plaani M03 kinnitamist, aga otsust pole veel tehtud."
+    },
+    {
+      "id": "ee6_omistus_01",
+      "category": "omistus",
+      "risk": "high",
+      "validator": "toimetamine",
+      "allikas": "Calvion tegi ettepaneku kasutada Neoni, Telos otsustas alustada ühe serveriga.",
+      "expected": {
+        "omistus": [
+          [
+            "Calvion",
+            "ettepaneku"
+          ],
+          [
+            "Telos",
+            "otsusta"
+          ]
+        ],
+        "max_muutus": 0.25,
+        "kaitstud": [
+          "Neon"
+        ]
+      },
+      "prompt": "Toimeta allolev eestikeelne tekst: paranda õigekiri, käänded, ühildumine ja kirjavahemärgid nii, et tekst oleks korrektne ja loomulik eesti keel. Ära muuda sisu: nimesid, kuupäevi, kellaaegu, numbreid, ID-sid, otsuste olekut, eitusi, ebakindlust ega seda, kes mida ütles või tegi. Kui tekst on juba korras, tagasta see muutmata. Vasta AINULT toimetatud tekstiga, ilma selgituse, pealkirja ja jutumärkideta.\n\nTEKST:\nCalvion tegi ettepaneku kasutada Neoni, Telos otsustas alustada ühe serveriga."
+    }
+  ]
+}

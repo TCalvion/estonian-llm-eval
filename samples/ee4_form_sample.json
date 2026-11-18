@@ -1,0 +1,64 @@
+{
+  "suite": "ee-bench-4",
+  "version": "1.1",
+  "full_suite_size": 20,
+  "full_suite_sha256": "da3df228e26541d86d524a2a963033d5f94948d5fdbc0072fe1409cf6a7fa101",
+  "note": "Public sample. The full suite is held out to avoid training-data contamination; its SHA-256 is given so results can be tied to the frozen version.",
+  "description": "EE4 \"form\": 20 Estonian morphology and orthography items in four blocks (case and agreement, verb forms, numerals, spelling and punctuation), one control item per block. Deterministic one_of validator. Written from scratch, not taken from public datasets.",
+  "tests": [
+    {
+      "id": "ee4_k01",
+      "category": "kaane_uhildumine",
+      "risk": "low",
+      "difficulty": "hard",
+      "validator": "one_of",
+      "expected": [
+        "suure maja",
+        "suure maja.",
+        "Suure maja",
+        "Suure maja."
+      ],
+      "prompt": "Pane sulgudes olev sõnaühend lausesse sobivasse vormi.\nLause: Me elasime kolm aastat ___ lähedal. (suur maja)\n\nVasta ainult nõutud vormiga: ilma selgituse, jutumärkide ja lõpupunktita."
+    },
+    {
+      "id": "ee4_v01",
+      "category": "verbivormid",
+      "risk": "low",
+      "difficulty": "hard",
+      "validator": "one_of",
+      "expected": [
+        "lõpetada",
+        "lõpetada.",
+        "Lõpetada",
+        "Lõpetada."
+      ],
+      "prompt": "Pane sulgudes olev verb lausesse sobivasse vormi.\nLause: Mul on vaja see töö täna ära ___. (lõpetama)\n\nVasta ainult nõutud vormiga: ilma selgituse, jutumärkide ja lõpupunktita."
+    },
+    {
+      "id": "ee4_a01",
+      "category": "arvsonad",
+      "risk": "low",
+      "difficulty": "hard",
+      "validator": "one_of",
+      "expected": [
+        "kahekümne viiendal",
+        "kahekümne viiendal.",
+        "Kahekümne viiendal",
+        "Kahekümne viiendal."
+      ],
+      "prompt": "Kirjuta sulgudes olev arv sõnadega lausesse sobivas vormis.\nLause: Koosolek toimub ___ novembril. (25.)\n\nVasta ainult nõutud vormiga: ilma selgituse, jutumärkide ja lõpupunktita."
+    },
+    {
+      "id": "ee4_o01",
+      "category": "oigekiri",
+      "risk": "low",
+      "difficulty": "hard",
+      "validator": "one_of",
+      "expected": [
+        "B",
+        "B."
+      ],
+      "prompt": "Kumb lause on kirjavahemärkide poolest õige?\nA) Ta läks varem koju sest oli väga väsinud.\nB) Ta läks varem koju, sest oli väga väsinud.\nVasta ainult tähega A või B.\n\nVasta ainult nõutud vormiga: ilma selgituse, jutumärkide ja lõpupunktita."
+    }
+  ]
+}
